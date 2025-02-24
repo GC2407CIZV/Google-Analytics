@@ -1,76 +1,102 @@
 # Bellabeat Smart Device Usage Analysis: Strategic Recommendations for the Leaf Product
 
-This case study analyzes smart device usage data from publicly available Fitbit datasets to provide insights for Bellabeat, a wellness technology company, focusing on the Leaf wellness tracker. The goal is to understand consumer trends related to activity, sleep, and calorie expenditure to inform Bellabeat’s marketing strategy.
+This case study analyzes smart device usage data to provide actionable insights for Bellabeat, a wellness technology company. The goal is to understand consumer trends related to activity, sleep, and calorie expenditure to inform Bellabeat’s marketing strategy for the Leaf wellness tracker.
 
 ## Table of Contents
 
-1. [Introduction](#1-introduction)
-2. [Business Context](#2-business-context)
-3. [Data Overview](#3-data-overview)
-4. [Analysis & Key Findings](#4-analysis-key-findings)
-    * [4.1 Activity Patterns](#4.1-activity-patterns)
-    * [4.2 Sleep Patterns](#4.2-sleep-patterns)
-    * [4.3 Correlations](#4.3-correlations)
-5. [Strategic Recommendations](#5-strategic-recommendations)
-6. [Next Steps](#6-next-steps)
-7. [Conclusion](#7-conclusion)
-8. [Repository Contents](#8-repository-contents)
+1. [Project Overview](#1-project-overview)
+2. [Skills](#2-skills)
+3. [Ask (Business Task & Questions)](#3-ask)
+4. [Prepare (Data & Limitations)](#4-prepare)
+5. [Process (Data Analysis)](#5-process)
+    * [5.1 Data Cleaning & Transformation](#5.1-data-cleaning-transformation)
+    * [5.2 Exploratory Data Analysis](#5.2-exploratory-data-analysis)
+6. [Share (Key Findings & Recommendations)](#6-share)
+    * [6.1 Key Findings](#6.1-key-findings)
+    * [6.2 Recommendations](#6.2-recommendations)
+7. [Act (Next Steps)](#7-act)
+8. [Conclusion](#8-conclusion)
+9. [Repository Contents](#9-repository-contents)
 
-## 1. Introduction
+## 1. Project Overview
 
-This case study uses Fitbit data to understand consumer wellness trends and provide data-driven marketing recommendations for Bellabeat's Leaf product.  The analysis explores activity, sleep, and calorie expenditure patterns to identify opportunities for product positioning and feature promotion.
+This case study uses publicly available Fitbit data to analyze user trends in activity, sleep, and calorie expenditure.  The insights gained are used to develop data-driven marketing recommendations for Bellabeat's Leaf product, focusing on product positioning, feature promotion, and target audience identification.
 
-## 2. Business Context
+## 2. Skills
 
-Bellabeat, a wellness technology company, aims to empower women through beautifully designed health-focused products.  This analysis supports Bellabeat's strategic decision-making by providing insights into consumer behavior and preferences in the wellness market.
+* **Programming Language:** R
+* **Tools & Technologies:** RStudio (Posit Cloud), tidyverse, lubridate, ggplot2, readr
+* **Data Analysis:** Data cleaning, transformation, exploratory data analysis (EDA), data visualization
+* **Business Acumen:**  Translating data insights into actionable business recommendations, strategic thinking, marketing strategy development
 
-## 3. Data Overview
+## 3. Ask (Business Task & Questions)
 
-The analysis uses publicly available Fitbit data from Kaggle, comprising minute-level data on activity, heart rate, and sleep from 30 users.  The data includes daily summaries, hourly data, and sleep records.  A key limitation is the small sample size and potential bias as the data originates from Fitbit users, not Bellabeat customers.  Data integrity was ensured through initial checks and cleaning during the processing stage.
+**Business Task:** Analyze smart device usage data to understand consumer trends related to activity, sleep, and calorie expenditure, and provide data-backed marketing recommendations for Bellabeat’s Leaf product.
 
-## 4. Analysis & Key Findings
+**Key Questions:**
 
-### 4.1 Activity Patterns
+1. What are some trends in smart device usage?
+2. How could these trends apply to Bellabeat customers?
+3. How could these trends help influence Bellabeat marketing strategy?
 
-* **Sedentary Behavior:**  Sedentary time dominates user activity (73%), highlighting the need for interventions to encourage movement.
-* **Step Count Variation:** Daily step counts vary widely, with a significant portion below the recommended 10,000 steps, indicating potential for improvement.
-* **Weekday/Weekend Differences:** Potential differences in activity levels exist between weekdays and weekends, requiring further investigation for targeted engagement.
-* **Activity Level Distribution:**  The distribution of activity levels (very active, fairly active, lightly active) varies across days of the week, suggesting the need for personalized activity recommendations.
+## 4. Prepare (Data & Limitations)
 
-### 4.2 Sleep Patterns
+**Data Source:** Fitbit Fitness Tracker Data (Kaggle)
 
-* **Sleep Duration Variation:** Sleep durations vary considerably, emphasizing the need for personalized sleep tracking and recommendations.
-* **Sleep Time Distribution:**  A significant portion of users sleep between 5 and 10 hours, but there are notable segments who sleep less or more, highlighting diverse sleep patterns.
+**Data Characteristics:** Minute-level data on activity, heart rate, and sleep from 30 Fitbit users. Includes daily and hourly summaries.
 
-### 4.3 Correlations
+**Data Limitations:** Small sample size (30 users), potential bias in self-reported data, data from Fitbit users (not Bellabeat users).  These limitations are acknowledged and considered in the analysis and recommendations.
 
-* **Steps & Calories:** A strong positive correlation exists between daily steps and calories burned.
-* **Steps & Sedentary Minutes:** A moderate negative correlation exists between daily steps and sedentary minutes.
-* **Sleep & Activity:** No strong linear relationship exists between sleep duration and total daily active minutes.
-* **Sleep & Sedentary Minutes:** A potential negative correlation exists between sleep duration and sedentary minutes.
-* **Steps & Sleep:** A weak or non-existent correlation was found between daily step count and sleep duration.
+## 5. Process (Data Analysis)
 
-## 5. Strategic Recommendations
+### 5.1 Data Cleaning & Transformation
 
-* **Product Positioning:** Position the Leaf as a tool for reducing sedentary behavior, improving sleep quality, and promoting overall wellness.
-* **Feature Promotion:** Emphasize features related to sleep tracking, activity monitoring (including various activity types), and personalized recommendations.
-* **Targeted Marketing:** Develop targeted marketing campaigns based on activity levels, sleep patterns, and weekday/weekend activity variations.
-* **Personalized Insights:** Provide personalized insights and recommendations for activity and sleep improvement based on individual user data.
-* **Gamification:** Implement gamified challenges and social features to motivate users to be more active.
+* Loaded and inspected data using `readr` and `glimpse()`.
+* Checked for missing values and handled them appropriately.
+* Converted date/time columns to correct formats using `lubridate`.
+* Merged relevant datasets using `dplyr`'s `left_join()`.
+* Calculated new variables (e.g., total active minutes, weekday).
 
-## 6. Next Steps
+### 5.2 Exploratory Data Analysis
 
-* **User Research:** Conduct user research to understand motivations and barriers to increasing activity and improving sleep.
-* **Feature Development:** Develop and prototype new features based on user research and analysis findings.
-* **A/B Testing:** Implement A/B testing to evaluate the effectiveness of different intervention strategies and marketing campaigns.
-* **Partnerships:** Explore partnerships with other wellness companies to expand reach and offer integrated solutions.
+* Used `ggplot2` to visualize data and explore trends.
+* Analyzed distributions of daily steps, sleep time, and activity levels.
+* Investigated relationships between steps, calories, sleep, and sedentary minutes.
+* Compared activity levels between weekdays and weekends.
+* Identified potential correlations and patterns in the data.
 
-## 7. Conclusion
+## 6. Share (Key Findings & Recommendations)
 
-This analysis reveals key trends in user activity and sleep patterns, providing valuable insights for Bellabeat. By focusing on personalized solutions, addressing sedentary behavior, and promoting a holistic wellness approach, Bellabeat can effectively position the Leaf product and drive growth in the competitive wellness market.
+### 6.1 Key Findings
 
-## 8. Repository Contents
+* **Sedentary Behavior:** A significant portion of users' time is spent in sedentary activities.
+* **Steps & Calories:**  A positive correlation exists between daily steps and calorie expenditure.
+* **Sleep Patterns:** Sleep durations vary widely among users.
+* **Sleep & Activity:**  A complex relationship exists between sleep duration and activity levels.
+* **Weekday/Weekend Activity:** Potential differences in activity levels between weekdays and weekends.
+
+### 6.2 Recommendations
+
+* **Target Sedentary Users:** Position the Leaf as a tool to encourage movement and break up sedentary time.
+* **Promote Holistic Wellness:** Emphasize the importance of tracking both sleep and activity for overall well-being.
+* **Personalized Insights:** Develop personalized recommendations based on individual user patterns.
+* **Targeted Marketing:** Tailor marketing campaigns to specific user segments and activity patterns.
+* **Highlight Key Features:** Promote features related to sleep tracking, activity monitoring, and personalized goal setting.
+
+## 7. Act (Next Steps)
+
+* **Further Research:** Explore the influence of other factors (e.g., age, weight, diet) on activity and sleep.
+* **Feature Development:** Develop new features based on user trends and needs (e.g., sedentary behavior alerts, gamification).
+* **Marketing Campaign Development:** Implement marketing campaigns based on the recommendations.
+
+## 8. Conclusion
+
+This analysis provides valuable insights into user behavior related to activity, sleep, and calorie expenditure.  The recommendations presented can help Bellabeat effectively position the Leaf product, target its marketing efforts, and ultimately drive growth in the competitive wellness technology market.
+
+## 9. Repository Contents
 
 * `README.md`: This file.
-* `[Your Jupyter Notebook/R Script]`: The analysis code.
-* `[Data Files]`:  (If applicable, list any relevant data files)
+* `Bellabeat Data Analysis.R`: R script file containing the data analysis code.
+* `Bellabeat Data Analysis.Rmd`: R Markdown file containing the data analysis code and narrative.
+* `Bellabeat-Data-Analysis.html`: HTML output generated from the R Markdown file.
+* `Bellabeat-Data-Analysis.pdf`: PDF version of the R Markdown report.
